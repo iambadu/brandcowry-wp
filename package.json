@@ -1,0 +1,32 @@
+{
+  "name": "brandcowry",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "author": "Kwabena",
+  "scripts": {
+    "start": "gulp",
+    "build": "gulp build --prod",
+    "bundle": "gulp bundle --prod"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/register": "^7.0.0",
+    "babel-loader": "^8.0.4",
+    "browser-sync": "^2.26.3",
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-if": "^3.0.0",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "yargs": "^15.0.2"
+  },
+  "dependencies": {
+    "autoprefixer": "^9.7.3",
+    "babel-preset-minify": "^0.5.1",
+    "gulp-postcss": "^8.0.0",
+    "jquery": "^3.3.1"
+  }
+}
