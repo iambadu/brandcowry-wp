@@ -15,12 +15,18 @@
     "@babel/register": "^7.0.0",
     "babel-loader": "^8.0.4",
     "browser-sync": "^2.26.3",
+    "del": "^3.0.0",
     "gulp": "^4.0.2",
     "gulp-clean-css": "^4.2.0",
     "gulp-if": "^3.0.0",
     "gulp-imagemin": "^4.1.0",
+    "gulp-replace": "^1.0.0",
     "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.5",
+    "gulp-uglify": "^3.0.1",
+    "gulp-zip": "^4.2.0",
+    "vinyl-named": "^1.1.0",
+    "webpack-stream": "^5.1.1",
     "yargs": "^15.0.2"
   },
   "dependencies": {

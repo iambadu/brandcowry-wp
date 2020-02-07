@@ -8,33 +8,33 @@
  *
  * @link https://developer.wordpress.org/themes/functionality/custom-headers/
  *
- * @package brandcowry-redo
+ * @package brandcowry
  */
 
 /**
  * Set up the WordPress core custom header feature.
  *
- * @uses brandcowry_redo_header_style()
+ * @uses brandcowry_header_style()
  */
-function brandcowry_redo_custom_header_setup() {
-	add_theme_support( 'custom-header', apply_filters( 'brandcowry_redo_custom_header_args', array(
+function brandcowry_custom_header_setup() {
+	add_theme_support( 'custom-header', apply_filters( 'brandcowry_custom_header_args', array(
 		'default-image'          => '',
 		'default-text-color'     => '000000',
 		'width'                  => 1000,
 		'height'                 => 250,
 		'flex-height'            => true,
-		'wp-head-callback'       => 'brandcowry_redo_header_style',
+		'wp-head-callback'       => 'brandcowry_header_style',
 	) ) );
 }
-add_action( 'after_setup_theme', 'brandcowry_redo_custom_header_setup' );
+add_action( 'after_setup_theme', 'brandcowry_custom_header_setup' );
 
-if ( ! function_exists( 'brandcowry_redo_header_style' ) ) :
+if ( ! function_exists( 'brandcowry_header_style' ) ) :
 	/**
 	 * Styles the header image and text displayed on the blog.
 	 *
-	 * @see brandcowry_redo_custom_header_setup().
+	 * @see brandcowry_custom_header_setup().
 	 */
-	function brandcowry_redo_header_style() {
+	function brandcowry_header_style() {
 		$header_text_color = get_header_textcolor();
 
 		/*

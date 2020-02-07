@@ -7,13 +7,15 @@ import postcss from 'gulp-postcss';
 import sourcemaps from 'gulp-sourcemaps';
 import autoprefixer from 'autoprefixer';
 import imagemin from 'gulp-imagemin';
+import del from 'del';
+import webpack from 'webpack-stream';
+import named from 'vinyl-named';
 import browserSync from "browser-sync";
   const PRODUCTION = yargs.argv.prod;
   const server = browserSync.create();
   export const serve = done => {
     server.init({
-      proxy: "localhost/wp",
-      open: false
+      proxy: "localhost/"
     });
     done();
   };
@@ -21,10 +23,10 @@ import browserSync from "browser-sync";
     server.reload();
     done();
   };
- 
+  export const clean = () => del(['dist']);
 
   export const styles = () => {
-  return src(['scss/style.scss'])
+  return src(['src/scss/bootstrap/bootstrap.scss','src/scss/bundle.scss'])
     .pipe(gulpif(!PRODUCTION, sourcemaps.init()))
     .pipe(sass().on('error', sass.logError))
     .pipe(gulpif(PRODUCTION, postcss([ autoprefixer ])))
@@ -34,7 +36,7 @@ import browserSync from "browser-sync";
     .pipe(server.stream());
   }
   export const img = () => {
-  return src('img/**/*.{jpg,jpeg,png,svg,gif}')
+  return src('src/img/**/*.{jpg,jpeg,png,svg,gif}')
     .pipe(gulpif(PRODUCTION, imagemin()))
     .pipe(dest('img'));
   }
@@ -49,6 +51,6 @@ import browserSync from "browser-sync";
       watch(['src/**/*','!src/{img,js,scss}','!src/{img,js,scss}/**/*'], series(copy, reload));
       watch("**/*.php", reload);
     }
-    export const dev = series(parallel(styles, img), serve, watchForChanges);
-    export const build = series(parallel(styles, img));
+    export const dev = series(clean, parallel(styles, img, copy), serve, watchForChanges);
+    export const build = series(clean, parallel(styles, img, copy ));
     export default dev;
